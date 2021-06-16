@@ -19,18 +19,14 @@ class GraphSim():
     print('agents', self.agents)
 
   def _print_edges(self):
-    print('...beg print edges...')
     for row in self.edges:
       print((' ').join([str(x) for x in row]))
-    print('...end print edges...')
 
   def _clean(self):
     self.rec = []
     moves = self._get_moves()
     while (not self._is_done()):
       self._choose_moves(moves)
-
-    # self._save()
 
   def _get_moves(self):
     return [[_ for _, v in enumerate(tmp) if v == 1] for tmp in self.edges]
@@ -93,12 +89,9 @@ class GridSim(GraphSim):
     assert self._is_done() == False
 
   def _print_graph(self):
-    print('...beg print grid...')
     r, c = self.dim
-    print(self.agents)
     for i in range(r):
       print(('').join([str(x) for x in self.nodes[i*c:(i+1)*c]]))
-    print('...end print grid...')
 
   def run(self):
     self._clean()
